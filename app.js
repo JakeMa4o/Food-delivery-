@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
 const { error } = require("console");
+require("dotenv").config();
 
 mongoose.connect(`mongodb+srv://admin-Jake:${process.env.PASSWORD}@cluster0.hzll9.mongodb.net/foodDB`, {
   useUnifiedTopology: true,
