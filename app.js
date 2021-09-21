@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 // Food API
 const config = {
   endpoint: "https://api.spoonacular.com/recipes/complexSearch",
-  key: `${process.env.API_KEY}`,
+  key: process.env.API_KEY,
   query: "beef",
   maxFat: 25,
   number: 50
