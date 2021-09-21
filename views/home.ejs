@@ -1,0 +1,29 @@
+<%- include("header") -%>
+
+
+  <div class="container"> 
+    <div class="row">
+
+      <% data.forEach(function(item) { %>
+        <% if (item.image) { %>
+          <div class="col-md-4 col-sm-12 col-lg-3 food-item">
+            <form action="/" method="POST">
+              <h2>
+                <%= item.title %>
+              </h2>
+              <img src="<%= item.image %>" alt="">
+              <p> Nutrients: <%= item.nutrition.nutrients[0].title %>
+              </p>
+              <p>amount: <%= item.nutrition.nutrients[0].amount %> gram.</p>
+              <input type="hidden" name="id" value=<%=item.id %>>
+              <p>Price: $XXX</p>
+              <button id="<%= item.id %>" class="add-btn" type="submit">To the bag</button>
+            </form>
+          </div>
+        <% } %>
+      <% }) %>
+
+    </div>
+  </div>
+
+  <%- include("footer") -%>

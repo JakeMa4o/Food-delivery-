@@ -1,0 +1,56 @@
+<%- include("header") -%>
+
+  <div class="container">
+
+    <div class="foods-in-bag">
+    <% foods.forEach((food)=>{ %>
+      <form action="/bag" method="POST" class="buy-item">
+        <h2 class="food-title">
+          <%= food.title.slice(0, 15) %>
+        </h2>
+        <img class="food-img"  src="<%= food.url %>" alt="">
+        <p class=" food-nutTit"> Nutrients: <%= food.nutrientsTitle %>
+        </p>
+        <p class="food-nutAmt">amount: <%= food.nutrientsAmount %> gram.</p>
+        <input type="hidden" name="id" value=<%=food.id %>>
+        <p class="food-price">Price: $XXX</p>
+        <button class="remove-btn" type="submit"><i class="fas fa-trash-alt"></i></button>
+      </form>
+      <% }) %>
+  </div>
+
+  <div class="receipt">
+    <div class="order-details">
+      <p>You've got: <%= amountOfFoods %> items.</p>
+      <p>Price is: $XXX</p>
+    </div>
+
+    <div class="order-nav">
+      <a class="btn back-btn" href="/">Get back to Menu</a>
+      <!-- Cant order if you have no items -->
+      <% if( amountOfFoods> 0) { %>
+        <button class="btn order-btn">Make an order</button>
+        <% } %>
+    </div>
+
+    <div class="address-overlay">
+      <form action="">
+        <h2>Where to deliver?</h2>
+        <hr>
+        <input type="text" placeholder="street" required> <br> <br>
+        <input type="text" placeholder="house" required> <br> <br>
+        <input type="text" placeholder="flat"> <br> <br>
+        <input type="text" placeholder="tel" required> <br> <br>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Any comments or wishes"></textarea> <br> <br>
+        <button class="btn confirm-btn">Confirm address</button>
+        <button class="close-btn">X</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+  <%- include("footer") -%>
