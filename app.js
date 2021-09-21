@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
 const { error } = require("console");
-require("dotenv").config();
+
 
 mongoose.connect(`mongodb+srv://admin-Jake:${process.env.PASSWORD}@cluster0.hzll9.mongodb.net/foodDB`, {
   useUnifiedTopology: true,
@@ -29,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 // Food API
 const config = {
   endpoint: "https://api.spoonacular.com/recipes/complexSearch",
-  key: process.env.API_KEY,
+  key: `${process.env.API_KEY}`,
   query: "beef",
   maxFat: 25,
   number: 50
